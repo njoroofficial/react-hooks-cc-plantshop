@@ -47,7 +47,7 @@ function PlantCard({ id, name, image, price, onDelete }) {
     <li className="card" data-testid="plant-item">
       <img src={image} alt={name} />
       <h4>{name}</h4>
-      <p>Price: ${newPrice}</p>
+      <p>Price: {newPrice}</p>
       <div>
         <input
           type="number"

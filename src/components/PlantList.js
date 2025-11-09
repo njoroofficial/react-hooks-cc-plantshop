@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PlantCard from "./PlantCard";
 
-function PlantList({ searchTerm }) {
-  // state to store the fetched plants
-  const [plants, setPlants] = useState([]);
+function PlantList({ searchTerm, plants, setPlants }) {
   // State to track loading status
   const [isLoading, setIsLoading] = useState(true);
   // State to handle any potential errors
@@ -18,12 +16,6 @@ function PlantList({ searchTerm }) {
         setError(null);
 
         const response = await fetch("http://localhost:6001/plants");
-
-        // Handle bad responses (e.g., 404, 500)
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
         const data = await response.json();
         setPlants(data);
       } catch (err) {
