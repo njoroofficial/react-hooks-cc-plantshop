@@ -37,6 +37,11 @@ function PlantList({ searchTerm }) {
     fetchPlants();
   }, []); // This array ensures this effect runs only once, on mount.
 
+  // Handle plant deletion
+  const handleDeletePlant = (id) => {
+    setPlants((prevPlants) => prevPlants.filter((plant) => plant.id !== id));
+  };
+
   // Filter plants based on search term
   const filteredPlants = plants.filter((plant) =>
     plant.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -44,7 +49,7 @@ function PlantList({ searchTerm }) {
 
   // Conditional rendering based on fetch status
   if (isLoading) {
-    return <div>Loading users...</div>;
+    return <div>Loading plants...</div>;
   }
 
   if (error) {
@@ -55,7 +60,7 @@ function PlantList({ searchTerm }) {
     <ul className="cards">
       {/* render PlantCards components in here */}
       {filteredPlants.map((plant) => (
-        <PlantCard key={plant.id} {...plant} />
+        <PlantCard key={plant.id} {...plant} onDelete={handleDeletePlant} />
       ))}
     </ul>
   );

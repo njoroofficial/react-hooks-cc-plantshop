@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Aloe",
       "image": "./images/aloe.jpg",
-      "price": 15.99
+      "price": 16
     },
     {
       "id": 2,
@@ -41,12 +41,6 @@
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
       "price": 55
-    },
-    {
-      "name": "Maize",
-      "image": "./images/monstera.jpg",
-      "price": "0.06",
-      "id": 8
     }
   ]
 }
