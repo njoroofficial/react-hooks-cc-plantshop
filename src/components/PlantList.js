@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PlantCard from "./PlantCard";
 
-function PlantList() {
+function PlantList({ searchTerm }) {
   // state to store the fetched plants
   const [plants, setPlants] = useState([]);
   // State to track loading status
@@ -37,6 +37,11 @@ function PlantList() {
     fetchPlants();
   }, []); // This array ensures this effect runs only once, on mount.
 
+  // Filter plants based on search term
+  const filteredPlants = plants.filter((plant) =>
+    plant.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // Conditional rendering based on fetch status
   if (isLoading) {
     return <div>Loading users...</div>;
@@ -49,7 +54,7 @@ function PlantList() {
   return (
     <ul className="cards">
       {/* render PlantCards components in here */}
-      {plants.map((plant) => (
+      {filteredPlants.map((plant) => (
         <PlantCard key={plant.id} {...plant} />
       ))}
     </ul>
